@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+//Creating Even Schema on MongoDB
 const eventSchema = new Schema({
   title: {
     type: String,

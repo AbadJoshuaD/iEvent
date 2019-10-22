@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
+//Creating Booking Schema on MongoDB
 const bookingSchema = new Schema(
   {
     event: {
