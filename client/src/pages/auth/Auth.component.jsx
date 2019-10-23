@@ -1,11 +1,12 @@
 import React from "react";
 import "../auth/Auth.styles.scss";
 import axios from "axios";
+import AuthContext from "../../context/auth-context";
 class AuthPage extends React.Component {
   state = {
     isLogin: true
   };
-
+  static contextType = AuthContext;
   constructor(props) {
     super(props);
     this.emailEl = React.createRef();
@@ -64,7 +65,13 @@ class AuthPage extends React.Component {
         return res.data;
       })
       .then(resData => {
-        console.log(resData);
+        if (resData.data.login.token) {
+          this.context.login(
+            resData.data.login.token,
+            resData.data.login.userId,
+            resData.data.login.tokenExpiration
+          );
+        }
       })
       .catch(err => {
         console.log(err);
