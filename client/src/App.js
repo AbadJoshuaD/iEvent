@@ -6,6 +6,7 @@ import EventsPage from "./pages/events/Events.component";
 import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar.component";
 import AuthContext from "./context/auth-context";
+import HomePage from "./pages/home/Home.component";
 class App extends React.Component {
   state = {
     token: null,
