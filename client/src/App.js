@@ -1,10 +1,7 @@
 import React from "react";
 import "./App.css";
-import AuthPage from "./pages/auth/Auth.component";
-import BookingPage from "./pages/booking/Booking.component";
-import EventsPage from "./pages/events/Events.component";
+import "typeface-montserrat";
 import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
-import Navbar from "./components/Navbar/Navbar.component";
 import AuthContext from "./context/auth-context";
 import HomePage from "./pages/home/Home.component";
 class App extends React.Component {
@@ -33,22 +30,8 @@ class App extends React.Component {
               logout: this.logout
             }}
           >
-            <Navbar />
             <main className="main-content">
-              <Switch>
-                {this.state.token && <Redirect from="/" to="/events" exact />}
-                {this.state.token && (
-                  <Redirect from="/auth" to="/events" exact />
-                )}
-                {!this.state.token && (
-                  <Route path="/auth" component={AuthPage} />
-                )}
-                <Route path="/events" component={EventsPage} />
-                {this.state.token && (
-                  <Route path="/bookings" component={BookingPage} />
-                )}
-                {!this.state.token && <Redirect to="/auth" exact />}
-              </Switch>
+              <Route exact path to="/" component={HomePage} />
             </main>
           </AuthContext.Provider>
         </React.Fragment>

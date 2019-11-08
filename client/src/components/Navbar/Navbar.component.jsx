@@ -1,42 +1,39 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import "../Navbar/Navbar.styles.scss";
-import AuthContext from "../../context/auth-context";
+import { withStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
+import { ReactComponent as BrandLogo } from "../../assets/eventlogo.svg";
 
-const Navbar = () => (
-  <AuthContext.Consumer>
-    {context => {
-      return (
-        <header className="main-navigation">
-          <div className="main-navigation__logo">
-            <h1>EasyEvent</h1>
-          </div>
-          <nav className="main-navigation__items">
-            <ul>
-              {!context.token && (
-                <li>
-                  <NavLink to="/auth">Authenticate</NavLink>
-                </li>
-              )}
-              <li>
-                <NavLink to="/events">Events</NavLink>
-              </li>
-              {context.token && (
-                <React.Fragment>
-                  <li>
-                    <NavLink to="/bookings">Bookings</NavLink>
-                  </li>
-                  <li>
-                    <button onClick={context.logout}>Logout</button>
-                  </li>
-                </React.Fragment>
-              )}
-            </ul>
-          </nav>
-        </header>
-      );
-    }}
-  </AuthContext.Consumer>
-);
+const StyledButton = withStyles({
+  root: {
+    fontSize: "14px",
+    fontWeight: "bolder",
+    background: "transparent",
+    borderRadius: 3,
+    border: 0,
+    color: "white",
+    height: 48,
+    padding: "0 30px",
+    positions: "relative"
+  },
+  label: {
+    textTransform: "none"
+  }
+})(Button);
 
+const Navbar = () => {
+  return (
+    <div className="home__navbar">
+      <BrandLogo className="home__navbar__logo" />
+      <div className="home__options">
+        <StyledButton className="home__navbar__button">
+          Available Events
+        </StyledButton>
+        <StyledButton className="home__navbar__button">Log in</StyledButton>
+        <StyledButton className="home__navbar__button">Sign up</StyledButton>
+        <StyledButton className="home__navbar__button">Contacts</StyledButton>
+      </div>
+    </div>
+  );
+};
 export default Navbar;

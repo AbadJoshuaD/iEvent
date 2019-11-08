@@ -1,0 +1,22 @@
+.home__background {
+  width: 100vw;
+  height: 100vh;
+  background: url("../../assets/homebg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+.home__container {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 1fr 400px;
+  justify-content: center;
+  align-items: center;
+  padding: 0 6rem;
+}
+.home__message {
+  margin: 0;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-size: 3.5rem;
+}
